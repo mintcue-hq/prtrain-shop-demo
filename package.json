@@ -1,1 +1,8 @@
-{"name":"prtrain-shop-demo","version":"1.0.0","type":"commonjs","scripts":{"test":"node --test"}}
+{
+  "name": "prtrain-shop-demo",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "test": "node --test test/"
+  }
+}
