@@ -7,14 +7,14 @@ function orderTotal(items, discountPercent = 0) {
   return Math.round(sum * (100 - discountPercent) / 100);
 }
 
-// Shipping fee in cents: free above 30000, else 3000.
+// Shipping fee in cents: free from 30000, else 3000.
 function shippingFee(total) {
-  return total > 30000 ? 0 : 3000;
+  return total >= 30000 ? 0 : 3000;
 }
 
 // Coupon: subtract a fixed amount, but never below zero.
 function applyCoupon(total, amount) {
-  return total - amount;
+  return Math.max(0, total - amount);
 }
 
 module.exports = { orderTotal, shippingFee, applyCoupon };
