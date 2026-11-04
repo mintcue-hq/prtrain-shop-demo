@@ -1,0 +1,23 @@
+# Added by XenoCI prtrain only on prtrain/verify-* branches; it is not part of the merged change.
+name: prtrain verify
+on:
+  push:
+    branches:
+      - prtrain/verify-*
+jobs:
+  verify:
+    runs-on: xenoci-2vcpu-ubuntu-2404
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+      - uses: actions/setup-node@v4
+        with:
+          node-version: lts/*
+      - uses: actions/cache@v4
+        with:
+          path: ~/.npm
+          key: prtrain-npm-${{ runner.os }}-${{ hashFiles('package.json') }}
+      - run: npm install --no-audit --no-fund
+      - run: npm test
