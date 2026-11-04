@@ -2,7 +2,7 @@
 
 // VAT in cents for an order total in cents (10 percent).
 function vat(total) {
-  return total * 0.1;
+  return Math.round(total * 0.1);
 }
 
 // Total with VAT for a cart line list.
