@@ -12,9 +12,9 @@ function shippingFee(total) {
   return total >= 30000 ? 0 : 3000;
 }
 
-// Coupon: subtract a fixed amount from the order total.
+// Coupon: subtract a fixed amount, but never below zero.
 function applyCoupon(total, amount) {
-  return total - amount;
+  return Math.max(0, total - amount);
 }
 
 module.exports = { orderTotal, shippingFee, applyCoupon };
